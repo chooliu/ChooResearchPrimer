@@ -1,0 +1,63 @@
+title,url,tags
+0to255 (for color palettes),https://0to255.com/,scicom
+A comparison of single-cell trajectory inference methods (Saelens 2019),https://www.nature.com/articles/s41587-019-0071-9,methods|single-cell|review
+A survey of the approaches for identifying differential methylation using bisulfite sequencing data (Shafi 2018),https://pmc.ncbi.nlm.nih.gov/articles/PMC6171488/,methylation|review
+A technical review of multi-omics data integration methods: from classical statistical to deep generative approaches (Baiao 2025),https://academic.oup.com/bib/article/26/4/bbaf355/8220754,methods|multiomics|review
+Advanced R (Hadley Wickham),https://adv-r.hadley.nz/,coding|educational|R
+Analysis methods for studying the 3D architecture of the genome (Ay 2015),https://link.springer.com/article/10.1186/s13059-015-0745-7,3D-genome|review
+Assessment of computational methods for the analysis of single-cell ATAC-seq data (Chen 2019),https://link.springer.com/article/10.1186/s13059-019-1854-5,atac|methods|review
+Benefits and limitations of genome-wide association studies (Tam 2019),https://www.nature.com/articles/s41576-019-0127-1,genetics|review
+Beyond the baseline: mapping the context-specific regulatory landscape of disease,https://pmc.ncbi.nlm.nih.gov/articles/PMC12991421/,genetics|methods|QTL|review
+Broad Research Communication Lab (esp. see poster and presentation design),https://mitcommlab.mit.edu/broad/use-the-commkit/,academia|career|scicom
+Building and sustaining mentor interactions as a mentee (Sarabipour 2022),https://pmc.ncbi.nlm.nih.gov/articles/PMC8490489/,career|mentorship
+Career advice (Terry Tao),https://terrytao.wordpress.com/career-advice/,academia|career|mentorship
+Computational methods for analysing multiscale 3D genome organization (Zhang 2023),https://www.nature.com/articles/s41576-023-00638-1,3D-genome|review
+Computational Methods for Single-Cell DNA Methylome Analysis (Iqbal 2022),https://academic.oup.com/gpb/article/21/1/48/7274167,methods|methylation|review
+Current and future directions in network biology (Zitnik 2024),https://pmc.ncbi.nlm.nih.gov/articles/PMC11321866/,methods|review
+"Data wrangling, exploration, and analysis with R (Jenny Brian, STAT 545)",https://stat545.com/,coding|educational|R
+Deep learning predicts DNA methylation regulatory variants in specific brain cell types and enhances fine mapping for brain disorders (Zhou 2025),https://www.science.org/doi/10.1126/sciadv.adn1870,article|deep-learning|methylation|neuroscience|QTL
+Deep Learning with python (Chollet & Watson 2025),https://deeplearningwithpython.io/,deep-learning|educational|methods|python
+Deep learning: new computational modelling techniques for genomics (Eraslan 2019),https://www.nature.com/articles/s41576-019-0122-6,deep-learning|methods|review
+Designing conference posters (Colin Purrington),https://colinpurrington.com/tips/poster-design/,scicom
+DNA methylation QTL mapping across diverse human tissues provides molecular links between genetic variation and complex traits (Oliva 2023),https://pubmed.ncbi.nlm.nih.gov/36510025/,article|methylation|QTL
+Epigenetic ageing clocks: statistical methods and emerging computational challenges (2025),https://www.nature.com/articles/s41576-024-00807-w,aging|methylation|review
+Epigenomic dissection of Alzheimer's disease pinpoints causal variants and reveals epigenome erosion (Xiong 2023),https://www.cell.com/cell/fulltext/S0092-8674(23)00974-1,aging|article|atac|neuroscience|single-cell
+From reads to insight: a hitchhiker's guide to ATAC-seq data analysis (Yan 2020),https://link.springer.com/article/10.1186/s13059-020-1929-3,atac|methods|review
+From variants to mechanisms: Neurogenomics in the post-GWAS era (Margolis 2025),https://www.cell.com/neuron/fulltext/S0896-6273(25)00795-0,genetics|neuroscience|QTL|review
+Genetic and molecular architecture of complex traits (Lappalainen 2024),https://pubmed.ncbi.nlm.nih.gov/38428388/,genetics|methods|QTL|review
+Genome-wide sequencing-based identification of methylation quantitative trait loci and their role in schizophrenia risk (Mandell 2021),https://pubmed.ncbi.nlm.nih.gov/34475392/,article|QTL|methylation|neuroscience
+Genomic Data Science Specialization (Coursera JHU),https://www.coursera.org/specializations/genomic-data-science,educational|genetics|R|python
+Good enough practices in scientific computing (Wilson 2017),https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510,coding|educational
+Hallmarks of aging: an expanding universe (Lopez-Otin 2023),https://www.cell.com/cell/fulltext/S0092-8674(22)01377-0,aging|review
+i want hue (for color palettes),https://medialab.github.io/iwanthue/,scicom
+Making a R package primer: a minimal tutorial (Karl Broman),https://kbroman.org/pkg_primer/,coding|educational|R
+Manolis Kellis Machine Learning in Computational Biology (Youtube Series),https://www.youtube.com/@ManolisKellis1/courses,educational|methods|video
+Methylation QTLs in the developing brain and their enrichment in schizophrenia risk loci (Hannon 2016),https://www.nature.com/articles/nn.4182,article|DOHaD|methylation|neuroscience|QTL
+Museum of spatial transcriptomics (Moses 2022),https://www.nature.com/articles/s41592-022-01409-2,spatial|review
+Night Science: Readings about Creative Process in Science (Itai Yanai & Martin Lercher),https://night-science.org/home/learn/read/,academia|career|scicom
+Obtaining genetics insights from deep learning via explainable artificial intelligence (Novakovsky 2023),https://www.nature.com/articles/s41576-022-00532-2,deep-learning|genetics|review
+Opportunities and challenges of single-cell and spatially resolved genomics methods for neuroscience discovery (Bonev 2024),https://www.nature.com/articles/s41593-024-01806-0,single-cell|spatial|neuroscience|review
+Orchestrating Single-Cell Analysis with Bioconductor,https://bioconductor.org/books/release/OSCA/,educational|single-cell
+paletteer and r-color-palettes (Emil Hvitfeldt),https://github.com/EmilHvitfeldt/r-color-palettes,scicom
+"PhD Survival Guide: ""So long, and thanks for the PhD!"" (Ronald Azuma)",https://www.cs.unc.edu/~azuma/hitch4.html,academia|career|mentorship|scicom
+Principle Component Analysis Explained Visually,https://setosa.io/ev/principal-component-analysis/,educational|methods
+Redefining cellular reprogramming with advanced genomic technologies (Morris 2026),https://pmc.ncbi.nlm.nih.gov/articles/PMC12785792/,reprogramming|review
+Research Taste Exercises (Chris Olah 2021),https://colah.github.io/notes/taste/,academia|career
+"Simultaneous profiling of 3D genome structure and DNA methylation in single human cells (sn-m3C-seq, Lee 2019)",https://www.nature.com/articles/s41592-019-0547-z,article|3D-genome|luo-lab|methylation|multiomics|single-cell
+"Single nucleus multi-omics identifies human cortical cell regulatory genome diversity (snmCAT-seq, Luo 2022)",https://pubmed.ncbi.nlm.nih.gov/35419551/,article|luo-lab|methylation|multiomics|neuroscience|single-cell
+Snakemake for Doing Bioinformatics (C. Titus Brown Blog; start with beginner's guide part 1),http://ivory.idyll.org/blog/tag/snakemake.html,coding|python
+Snakemake Tutorial (try paired gitpod online tutorial),https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html,coding|python
+Spatiotemporal omics for biology and medicine,https://www.cell.com/cell/fulltext/S0092-8674(24)00834-1,methods|spatial|review
+StatQuest Youtube (Josh Starmer),https://www.youtube.com/@statquest,deep-learning|educational|methods|video
+Temporally distinct 3D multi-omic dynamics in the developing human brain (Heffel 2024),https://www.nature.com/articles/s41586-024-08030-7,article|DOHaD|luo-lab|methylation|multiomics|neuroscience|single-cell
+Ten simple rules for effective presentation slides (Naegle 2021),https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009554,scicom
+Ten simple rules for structuring papers (Mensh 2017),https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619,scicom|academia
+The Carpentries Lessons,https://carpentries.org/lessons/,coding|educational|terminal|R|python
+The Good Research Code Handbook (Patrick Mineault 2022),https://goodresearch.dev/,coding|educational
+The Hitchhiker's Guide to Hi-C Analysis: Practical guidelines (Lajoie 2016),The Hitchhiker's Guide to Hi-C Analysis: Practical guidelines (Lajoie 2016),3D-genome|review
+The Illustrated Guide to a Ph.D./Grad School App Advice (Matt Might),https://matt.might.net/articles/phd-school-in-pictures/,academia|career
+Theis Lab Single-Cell Best Practices (Heumos 2023),https://www.sc-best-practices.org/,educational|multiomics|single-cell
+Two decades of induced pluripotent stem cell research: From discovery to diverse applications (Yamanaka 2026),https://www.cell.com/cell-stem-cell/fulltext/S1934-5909(26)00073-1,reprogramming|review
+UNH Collection of Mentoring Guide: Resources for Mentees,https://libraryguides.unh.edu/c.php?g=1403337&p=10385147,career|mentorship
+Where are the disease-associated eQTLs? (Umans 2021),https://www.cell.com/trends/genetics/fulltext/S0168-9525(20)30248-9,QTL|review
+X. Shirley Liu Intro to Computational Biology (Youtube Series),https://www.youtube.com/watch?v=Stp1PhG8Ka8&list=PLeB-Dlq-v6tY3QLdQBA7rwb4a7fK9mLpv,educational|methods|single-cell|video
