@@ -43,18 +43,18 @@ paletteer and r-color-palettes (Emil Hvitfeldt),https://github.com/EmilHvitfeldt
 Principle Component Analysis Explained Visually,https://setosa.io/ev/principal-component-analysis/,educational|methods
 Redefining cellular reprogramming with advanced genomic technologies (Morris 2026),https://pmc.ncbi.nlm.nih.gov/articles/PMC12785792/,reprogramming|review
 Research Taste Exercises (Chris Olah 2021),https://colah.github.io/notes/taste/,academia|career
-"Simultaneous profiling of 3D genome structure and DNA methylation in single human cells (sn-m3C-seq, Lee 2019)",https://www.nature.com/articles/s41592-019-0547-z,article|3D-genome|luo-lab|methylation|multiomics|single-cell
-"Single nucleus multi-omics identifies human cortical cell regulatory genome diversity (snmCAT-seq, Luo 2022)",https://pubmed.ncbi.nlm.nih.gov/35419551/,article|luo-lab|methylation|multiomics|neuroscience|single-cell
+"Simultaneous profiling of 3D genome structure and DNA methylation in single human cells (sn-m3C-seq, Lee 2019)",https://www.nature.com/articles/s41592-019-0547-z,article|3D-genome|methylation|multiomics|single-cell
+"Single nucleus multi-omics identifies human cortical cell regulatory genome diversity (snmCAT-seq, Luo 2022)",https://pubmed.ncbi.nlm.nih.gov/35419551/,article|methylation|multiomics|neuroscience|single-cell
 Snakemake for Doing Bioinformatics (C. Titus Brown Blog; start with beginner's guide part 1),http://ivory.idyll.org/blog/tag/snakemake.html,coding|python
 Snakemake Tutorial (try paired gitpod online tutorial),https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html,coding|python
 Spatiotemporal omics for biology and medicine,https://www.cell.com/cell/fulltext/S0092-8674(24)00834-1,methods|spatial|review
 StatQuest Youtube (Josh Starmer),https://www.youtube.com/@statquest,deep-learning|educational|methods|video
-Temporally distinct 3D multi-omic dynamics in the developing human brain (Heffel 2024),https://www.nature.com/articles/s41586-024-08030-7,article|DOHaD|luo-lab|methylation|multiomics|neuroscience|single-cell
+Temporally distinct 3D multi-omic dynamics in the developing human brain (Heffel 2024),https://www.nature.com/articles/s41586-024-08030-7,article|DOHaD|methylation|multiomics|neuroscience|single-cell
 Ten simple rules for effective presentation slides (Naegle 2021),https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009554,scicom
 Ten simple rules for structuring papers (Mensh 2017),https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619,scicom|academia
 The Carpentries Lessons,https://carpentries.org/lessons/,coding|educational|terminal|R|python
 The Good Research Code Handbook (Patrick Mineault 2022),https://goodresearch.dev/,coding|educational
-The Hitchhiker's Guide to Hi-C Analysis: Practical guidelines (Lajoie 2016),The Hitchhiker's Guide to Hi-C Analysis: Practical guidelines (Lajoie 2016),3D-genome|review
+The Hitchhiker's Guide to Hi-C Analysis: Practical guidelines (Lajoie 2016),https://pmc.ncbi.nlm.nih.gov/articles/PMC4347522/,3D-genome|review
 The Illustrated Guide to a Ph.D./Grad School App Advice (Matt Might),https://matt.might.net/articles/phd-school-in-pictures/,academia|career
 Theis Lab Single-Cell Best Practices (Heumos 2023),https://www.sc-best-practices.org/,educational|multiomics|single-cell
 Two decades of induced pluripotent stem cell research: From discovery to diverse applications (Yamanaka 2026),https://www.cell.com/cell-stem-cell/fulltext/S1934-5909(26)00073-1,reprogramming|review

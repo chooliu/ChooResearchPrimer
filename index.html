@@ -1,360 +1,558 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Choo's Research Primer Intro Pack</title>
-  <script src="assets/papaparse.min.js"></script>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choo's Research Intro Pack</title>
+<meta name="description" content="this is a (currently way too long) compilation of resources that I frequently find myself sharing with peers and mentees interested in my research at UCLA (see overview at [chooliu.github.io](https://chooliu.github.io)). less focused on the state-of-the-art in favor of accessible reviews, foundational papers, and opinionated research advice that has resonated with me.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23ece1d4'/><rect x='6' y='9' width='20' height='4' rx='2' fill='%23a3470b'/><rect x='6' y='16' width='20' height='4' rx='2' fill='%232f626f'/><rect x='6' y='23' width='13' height='4' rx='2' fill='%238d4262'/></svg>">
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, Helvetica, sans-serif;
-      background: #f5f5f3;
-      color: #2d2d2d;
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&display=swap">
 
-    h1 {
-      font-size: 1.55rem;
-      font-weight: 650;
-      margin-bottom: 0.3rem;
-      letter-spacing: -0.02em;
-    }
+<style>
+  :root {
+    --page:  #ece1d4;
+    --card:  #ffffff;
+    --line:  #e6d7c4;
+    --ink:   #332a1d;
+    --ink2:  #7a6a54;
+    --ink3:  #b0a086;
+    --accent:#a06a3c;
+  }
 
-    .tagline {
-      color: #555;
-      font-size: 0.88rem;
-      line-height: 1.55;
-      max-width: 640px;
-      margin-bottom: 1.3rem;
-    }
-    .tagline a { color: #555; }
+  *, *::before, *::after { box-sizing: border-box; }
 
-    .subtitle {
-      color: #777;
-      font-size: 0.85rem;
-      margin-bottom: 1.2rem;
-    }
+  body {
+    margin: 0;
+    padding: 52px 24px 90px;
+    background: var(--page);
+    color: var(--ink);
+    font: 400 13px/1.6 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: #f0e3c0; }
 
-    #search-box {
-      width: 100%;
-      padding: 0.5rem 0.85rem;
-      font-size: 0.9rem;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      margin-bottom: 1.2rem;
-      outline: none;
-      background: white;
-      color: #2d2d2d;
-    }
-    #search-box:focus { border-color: #aaa; }
+  main { max-width: 1000px; margin: 0 auto; }
 
-    .filter-section {
-      margin-bottom: 0.6rem;
-    }
+  h1 {
+    margin: 0;
+    font: 600 27px/1.05 inherit;
+    letter-spacing: -1.5px;
+  }
+  .intro { margin: 11px 0 0; color: var(--ink2); }
+  .intro a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .intro a:hover { color: #7f5228; }
 
-    .filter-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: #bbb;
-      margin-bottom: 0.35rem;
-    }
+  /* ---- controls ------------------------------------------------------- */
 
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      align-items: center;
-    }
+  .controls {
+    margin-top: 22px;
+    padding: 16px 18px;
+    background: var(--card);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(70, 55, 40, .05);
+  }
 
-    .filter-wrapper {
-      margin-bottom: 1.5rem;
-    }
+  .controls-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 
-    .clear-btn {
-      background: none;
-      border: 1.5px dashed #bbb;
-      border-radius: 4px;
-      padding: 0.28rem 0.85rem;
-      font-size: 0.8rem;
-      color: #999;
-      cursor: pointer;
-      margin-top: 0.6rem;
-      transition: border-color 0.15s, color 0.15s;
-    }
-    .clear-btn:hover { border-color: #888; color: #555; }
+  .search {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(70, 55, 40, .05);
+  }
+  .search input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    font: inherit;
+    color: var(--ink2);
+  }
+  .search input::placeholder { color: var(--ink3); }
 
-    .filter-btn {
-      border: 2px solid transparent;
-      border-radius: 999px;
-      padding: 0.28rem 0.85rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-      opacity: 0.38;
-      transition: opacity 0.15s, transform 0.1s, border-color 0.1s;
-    }
-    .filter-btn:hover  { opacity: 0.7; }
-    .filter-btn.active { opacity: 1; transform: scale(1.05); border-color: rgba(0,0,0,0.45); }
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .filter-row > .label {
+    flex: none;
+    width: 84px;
+    font: 700 9px/1 inherit;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: var(--ink2);
+  }
+  .filter-row > .options {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+  }
 
-    .resources {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
+  button { font: inherit; cursor: pointer; }
 
-    .resource-card {
-      background: white;
-      border: 1px solid #e4e4e4;
-      border-radius: 9px;
-      padding: 0.95rem 1.15rem;
-      transition: box-shadow 0.15s;
-    }
-    .resource-card:hover  { box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
-    .resource-card.hidden { display: none; }
+  /* sort — segmented control */
+  .sort { display: flex; align-items: center; gap: 8px; }
+  .sort > .label {
+    font: 600 9px/1 inherit;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: var(--ink2);
+  }
+  .sort > .group {
+    display: flex;
+    gap: 2px;
+    padding: 2px;
+    background: rgba(90, 70, 50, .07);
+    border-radius: 5px;
+  }
+  .sort button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 3px;
+    background: none;
+    font-size: 11.5px;
+    color: var(--ink2);
+  }
+  .sort button[aria-pressed="true"] {
+    background: var(--card);
+    font-weight: 600;
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(70, 55, 40, .14);
+  }
 
-    .resource-title a {
-      font-weight: 600;
-      font-size: 0.97rem;
-      color: #1a1a1a;
-      text-decoration: none;
-    }
-    .resource-title a:hover { text-decoration: underline; }
+  /* keyword pillars */
+  .keyword {
+    padding: 6px 13px;
+    border: 1.5px solid transparent;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 11.5px;
+    background: var(--bg);
+    color: var(--fg);
+    transition: border-color .15s ease;
+  }
+  .keyword:hover,
+  .keyword[aria-pressed="true"] { border-color: var(--accent); }
 
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.32rem;
-      margin-top: 0.5rem;
-    }
+  /* the row that names a pillar's member tags on hover/focus */
+  .reveal {
+    min-height: 15px;
+    margin: 0 0 0 98px;
+    font-size: 10px;
+    line-height: 1.4;
+    color: var(--ink2);
+  }
+  .reveal b { font-weight: 700; }
+  .reveal span { font-weight: 500; margin-left: 8px; }
 
-    .tag {
-      border-radius: 999px;
-      padding: 0.14rem 0.62rem;
-      font-size: 0.74rem;
-      font-weight: 500;
-    }
+  /* format chips */
+  .format {
+    padding: 5px 10px;
+    border: 1.5px solid transparent;
+    border-radius: 4px;
+    background: rgba(120, 90, 60, .07);
+    font-size: 11px;
+    color: var(--ink2);
+  }
+  .format[aria-pressed="true"] { border-color: var(--accent); font-weight: 600; color: var(--ink); }
 
-    .no-results {
-      color: #999;
-      font-size: 0.9rem;
-      padding: 1rem 0;
-    }
-  </style>
+  .clear {
+    margin-left: 2px;
+    padding: 5px 8px;
+    border: 1px dotted var(--ink3);
+    border-radius: 4px;
+    background: none;
+    font-size: 10px;
+    color: var(--ink3);
+  }
+  .clear:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---- results -------------------------------------------------------- */
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 82px;
+    padding: 9px 11px;
+    background: var(--card);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(70, 55, 40, .05);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -15px rgba(70, 55, 40, .42);
+  }
+  .card .title { font-weight: 600; font-size: 12px; line-height: 1.32; color: var(--ink); text-decoration: none; }
+  .card a.title:hover { text-decoration: underline; }
+  .card .cite { margin-top: -2px; font-size: 11px; line-height: 1.3; color: var(--ink3); }
+
+  .card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    margin-top: auto;
+    padding-top: 5px;
+  }
+  .card .tag {
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 9.5px;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  .card .fmt {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 2px;
+    font-weight: 600;
+    font-size: 8.5px;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: var(--ink3);
+  }
+  .card .fmt::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--dot);
+  }
+
+  .status { margin: 22px 2px; color: var(--ink3); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    .card:hover { transform: none; }
+  }
+
+  @media (max-width: 560px) {
+    body { padding: 32px 16px 60px; }
+    .filter-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .filter-row > .label { width: auto; }
+    .reveal { margin-left: 0; }
+  }
+</style>
 </head>
+
 <body>
+<main>
+  <h1>Choo's Research Intro&nbsp;Pack</h1>
+  <p class="intro">
+    this is a (currently way too long) compilation of resources that I frequently find myself
+    sharing with peers and mentees interested in my research at UCLA (see overview at
+    <a href="https://github.com/chooliu/" target="_blank" rel="noopener noreferrer">github.com/chooliu</a>).
+    less focused on the state-of-the-art in favor of accessible reviews, foundational papers,
+    and opinionated research advice that has resonated with me.
+  </p>
 
-  <h1>Choo's Research Intro Pack</h1>
-  <p class="tagline">this is a (currently too long) compilation of resources that I frequently find myself sharing with peers and mentees interested in my research at UCLA (see overview at <a href="https://github.com/chooliu/" target="_blank" rel="noopener noreferrer">github.com/chooliu</a>). less focused on the state-of-the-art in favor of instead reviews, foundational papers, and opinionated research advice that has resonated with me.</p>
+  <section class="controls">
+    <div class="controls-top">
+      <label class="search">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#b0a086" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path>
+        </svg>
+        <input id="search" type="search" placeholder="Search title, author, or topic…" aria-label="Search resources">
+      </label>
+      <div class="sort">
+        <span class="label">Sort</span>
+        <div class="group" id="sort"></div>
+      </div>
+    </div>
 
-  <input type="search" id="search-box" placeholder="Search by title…" />
-  <p class="subtitle">Click tags to filter (multiple = AND).</p>
+    <div class="filter-row">
+      <span class="label" id="kw-label">Keywords</span>
+      <div class="options" id="keywords" role="group" aria-labelledby="kw-label"></div>
+    </div>
+    <p class="reveal" id="reveal" aria-live="polite"></p>
 
-  <div class="filter-wrapper" id="filter-wrapper"></div>
-  <div class="resources" id="resources"></div>
+    <div class="filter-row">
+      <span class="label" id="fmt-label">Format</span>
+      <div class="options" id="formats" role="group" aria-labelledby="fmt-label"></div>
+    </div>
+  </section>
 
-  <script>
-    const TAG_COLORS = {
-      '3D-genome':    '#C4ACF4',
-      'academia':     '#C18748',
-      'aging':        '#79402E',
-      'article':      '#E8A87C',
-      'atac':         '#D3DB7F',
-      'career':       '#F2B5D4',
-      'coding':       '#273046',
-      'deep-learning':'#7B2D8B',
-      'DOHaD':        '#446455',
-      'educational':  '#0B775E',
-      'genetics':     '#7EC8A4',
-      'luo-lab':      '#9AB7D3',
-      'mentorship':   '#9986A5',
-      'methods':      '#5BBCD6',
-      'methylation':  '#0A9F9D',
-      'multiomics':   '#5B1A18',
-      'neuroscience': '#3B9AB2',
-      'python':       '#046C9A',
-      'QTL':          '#972D15',
-      'R':            '#B40F20',
-      'reprogramming':'#E07BAA',
-      'review':       '#F2AD00',
-      'scicom':       '#6C8645',
-      'single-cell':  '#E54E21',
-      'spatial':      '#175149',
-      'terminal':     '#BDD0C4',
-      'video':        '#FF6B6B',
-      'other':        '#BEBEBE',
-    };
+  <div class="grid" id="grid"></div>
+  <p class="status" id="status"></p>
+</main>
 
-    const FORMAT_TAGS = ['article', 'review', 'video'];
+<script>
+// Which pillar each CSV tag rolls up into.
+const PILLAR_OF = {
+  methylation: 'assays', atac: 'assays', '3D-genome': 'assays',
+  'single-cell': 'assays', spatial: 'assays', multiomics: 'assays',
+  genetics: 'gen', QTL: 'gen',
+  neuroscience: 'bio', aging: 'bio', DOHaD: 'bio', reprogramming: 'bio',
+  methods: 'compute', 'deep-learning': 'compute', coding: 'compute',
+  python: 'compute', R: 'compute', terminal: 'compute',
+  career: 'craft', mentorship: 'craft', academia: 'craft',
+  scicom: 'craft', educational: 'craft',
+};
 
-    const TAG_GROUPS = {
-      'Topics':  ['3D-genome','academia','aging','atac','career','coding',
-                  'deep-learning','DOHaD','educational','genetics','luo-lab',
-                  'mentorship','methods','methylation','multiomics',
-                  'neuroscience','python','QTL','R','reprogramming',
-                  'scicom','single-cell','spatial','terminal'],
-      'Format':  ['article','review','video','other'],
-    };
+// Sugar "Cinnamon" accents: chip tinted into cream, label darkened to clear
+// 4.5:1. Kept >=dE 13 apart so adjacent chips stay distinguishable.
+// compute is the exception — Cinnamon's teal desaturates to near-grey when
+// tinted, so it borrows a blue (wesanderson Darjeeling1) to stay visible.
+const PILLARS = {
+  assays:  { label: 'assays & multiomics', bg: '#f5dbc7', fg: '#a3470b' },
+  bio:     { label: 'biology & disease',   bg: '#dbdfba', fg: '#516614' },
+  compute: { label: 'computation',         bg: '#afdae3', fg: '#2f626f' },
+  gen:     { label: 'genetics & qtl',      bg: '#efd5a3', fg: '#7d5609' },
+  craft:   { label: 'research & learning', bg: '#e9ccd1', fg: '#8d4262' },
+};
+const ORDER = ['assays', 'bio', 'compute', 'gen', 'craft'];
 
-    let activeFilters = new Set();
-    let searchQuery = '';
+const FORMATS = {
+  article: { label: 'article', dot: '#cbb08a', rank: 0 },
+  review:  { label: 'review',  dot: '#a9713f', rank: 1 },
+  video:   { label: 'video',   dot: '#9c5a4a', rank: 2 },
+};
 
-    function textColor(hex) {
-      const r = parseInt(hex.slice(1,3), 16);
-      const g = parseInt(hex.slice(3,5), 16);
-      const b = parseInt(hex.slice(5,7), 16);
-      return (r * 0.299 + g * 0.587 + b * 0.114) > 128 ? '#333' : '#fff';
+const state = { items: [], query: '', sort: 'az', keywords: [], formats: [] };
+
+// RFC 4180: fields may be quoted, and "" is a literal quote.
+function parseCsv(text) {
+  const rows = [];
+  let row = [], field = '', quoted = false;
+  if (text.charCodeAt(0) === 0xfeff) text = text.slice(1);   // strip BOM (Excel writes one)
+
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (quoted) {
+      if (c !== '"') field += c;
+      else if (text[i + 1] === '"') { field += '"'; i++; }
+      else quoted = false;
+    } else if (c === '"') {
+      quoted = true;
+    } else if (c === ',') {
+      row.push(field); field = '';
+    } else if (c === '\n') {
+      row.push(field); rows.push(row); row = []; field = '';
+    } else if (c !== '\r') {
+      field += c;
     }
+  }
+  if (field || row.length) { row.push(field); rows.push(row); }
 
-    function parseTitle(raw, urlCol) {
-      const md = raw && raw.match(/^\[(.+?)\]\((.+?)\)$/);
-      if (md) return { text: md[1], url: md[2] };
-      return { text: raw || '', url: urlCol || '' };
-    }
+  const [header, ...body] = rows;
+  const good = body.filter(r => r.length === header.length);
+  if (good.length !== body.length) {
+    console.warn(`resources.csv: skipped ${body.length - good.length} row(s) with the wrong ` +
+                 `field count — check for an unquoted comma.`);
+  }
+  return good.map(r => Object.fromEntries(header.map((h, i) => [h.trim(), r[i]])));
+}
 
-    function allTags() {
-      return Object.values(TAG_GROUPS).flat();
-    }
+// "Some title (Author 2019)" -> { title, cite }
+function splitCite(text) {
+  const m = text.match(/^(.*\S)\s*\(([^()]+)\)\s*$/);
+  return m ? { title: m[1], cite: m[2].trim() } : { title: text, cite: '' };
+}
 
-    function applyFilters() {
-      let visible = 0;
-      document.querySelectorAll('.resource-card').forEach(card => {
-        const cardTags = JSON.parse(card.dataset.tags);
-        const matchesTags = activeFilters.size === 0 ||
-          [...activeFilters].every(f =>
-            f === 'other'
-              ? !FORMAT_TAGS.some(ft => cardTags.includes(ft))
-              : cardTags.includes(f)
-          );
-        const matchesSearch = searchQuery === '' ||
-          card.dataset.titleText.includes(searchQuery);
-        const show = matchesTags && matchesSearch;
-        card.classList.toggle('hidden', !show);
-        if (show) visible++;
-      });
+// Only http(s) becomes a link. Anything else (a stray title in the url column,
+// a javascript: scheme) renders as plain text instead of a link that 404s.
+function safeUrl(raw) {
+  const url = (raw || '').trim();
+  if (!url) return '';
+  if (/^https?:\/\/\S+$/i.test(url)) return url;
+  console.warn(`resources.csv: ignoring unusable url ${JSON.stringify(url.slice(0, 60))}`);
+  return '';
+}
 
-      document.getElementById('no-results')?.remove();
-      if (visible === 0) {
-        const msg = document.createElement('p');
-        msg.id = 'no-results';
-        msg.className = 'no-results';
-        msg.textContent = 'No resources match your search or selected tags.';
-        document.getElementById('resources').appendChild(msg);
-      }
-    }
+function toItem(row) {
+  const tags = (row.tags || '').split('|').map(t => t.trim()).filter(Boolean);
+  const { title, cite } = splitCite((row.title || '').trim());
 
-    function toggleFilter(tag) {
-      activeFilters[activeFilters.has(tag) ? 'delete' : 'add'](tag);
-      document.getElementById(`btn-${CSS.escape(tag)}`).classList.toggle('active');
-      applyFilters();
-    }
+  const pillars = [];
+  for (const tag of tags) {
+    const key = PILLAR_OF[tag];
+    if (key && !pillars.includes(key)) pillars.push(key);
+  }
+  const format = ['video', 'review', 'article'].find(f => tags.includes(f)) || null;
 
-    function clearFilters() {
-      activeFilters.clear();
-      allTags().forEach(t => document.getElementById(`btn-${CSS.escape(t)}`)?.classList.remove('active'));
-      applyFilters();
-    }
+  return {
+    title, cite, pillars, format,
+    url: safeUrl(row.url),
+    groupRank: pillars.length ? Math.min(...pillars.map(k => ORDER.indexOf(k))) : ORDER.length,
+    formatRank: format ? FORMATS[format].rank : 9,
+    haystack: [title, cite, tags.join(' '), pillars.map(k => PILLARS[k].label).join(' ')]
+      .join(' ').toLowerCase(),
+  };
+}
 
-    function buildFilterBar() {
-      const wrapper = document.getElementById('filter-wrapper');
+function toggle(list, value) {
+  const i = list.indexOf(value);
+  if (i === -1) list.push(value); else list.splice(i, 1);
+}
 
-      Object.entries(TAG_GROUPS).forEach(([groupName, tags]) => {
-        const section = document.createElement('div');
-        section.className = 'filter-section';
+function visibleItems() {
+  const q = state.query.trim().toLowerCase();
+  const byTitle = (a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase());
 
-        const label = document.createElement('div');
-        label.className = 'filter-label';
-        label.textContent = groupName;
-        section.appendChild(label);
+  const items = state.items.filter(it =>
+    (!q || it.haystack.includes(q)) &&
+    state.keywords.every(k => it.pillars.includes(k)) &&
+    (!state.formats.length || state.formats.includes(it.format)));
 
-        const bar = document.createElement('div');
-        bar.className = 'filter-bar';
+  if (state.sort === 'group')  items.sort((a, b) => a.groupRank - b.groupRank || byTitle(a, b));
+  else if (state.sort === 'format') items.sort((a, b) => a.formatRank - b.formatRank || byTitle(a, b));
+  else items.sort(byTitle);
 
-        tags.forEach(tag => {
-          const btn = document.createElement('button');
-          btn.className = 'filter-btn';
-          btn.id = `btn-${CSS.escape(tag)}`;
-          btn.textContent = tag;
-          btn.style.backgroundColor = TAG_COLORS[tag];
-          btn.style.color = textColor(TAG_COLORS[tag]);
-          btn.addEventListener('click', () => toggleFilter(tag));
-          bar.appendChild(btn);
-        });
+  return items;
+}
 
-        section.appendChild(bar);
-        wrapper.appendChild(section);
-      });
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text != null) node.textContent = text;
+  return node;
+}
 
-      const clear = document.createElement('button');
-      clear.className = 'clear-btn';
-      clear.textContent = 'clear';
-      clear.addEventListener('click', clearFilters);
-      wrapper.appendChild(clear);
-    }
+function renderCard(item) {
+  const card = el('div', 'card');
 
-    function renderResources(rows) {
-      const container = document.getElementById('resources');
-      rows.forEach(row => {
-        const { text, url } = parseTitle(row.title, row.url);
-        if (!text) return;
+  const title = el(item.url ? 'a' : 'span', 'title', item.title);
+  if (item.url) {
+    title.href = item.url;
+    title.target = '_blank';
+    title.rel = 'noopener noreferrer';
+  }
+  const titleRow = el('div');
+  titleRow.append(title);
+  card.append(titleRow);
 
-        const tags = (row.tags ? row.tags.split('|').map(t => t.trim()).filter(Boolean) : [])
-          .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+  if (item.cite) card.append(el('div', 'cite', item.cite));
 
-        const card = document.createElement('div');
-        card.className = 'resource-card';
-        card.dataset.tags = JSON.stringify(tags);
-        card.dataset.titleText = text.toLowerCase();
+  const tags = el('div', 'tags');
+  for (const key of item.pillars) {
+    const tag = el('span', 'tag', PILLARS[key].label);
+    tag.style.setProperty('--bg', PILLARS[key].bg);
+    tag.style.setProperty('--fg', PILLARS[key].fg);
+    tags.append(tag);
+  }
+  if (item.format) {
+    const fmt = el('span', 'fmt', FORMATS[item.format].label);
+    fmt.style.setProperty('--dot', FORMATS[item.format].dot);
+    tags.append(fmt);
+  }
+  card.append(tags);
 
-        const titleDiv = document.createElement('div');
-        titleDiv.className = 'resource-title';
-        titleDiv.innerHTML = url
-          ? `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`
-          : `<span>${text}</span>`;
-        card.appendChild(titleDiv);
+  return card;
+}
 
-        if (tags.length) {
-          const tagList = document.createElement('div');
-          tagList.className = 'tag-list';
-          tags.forEach(tag => {
-            const span = document.createElement('span');
-            span.className = 'tag';
-            span.textContent = tag;
-            const bg = TAG_COLORS[tag] || '#999';
-            span.style.backgroundColor = bg;
-            span.style.color = textColor(bg);
-            tagList.appendChild(span);
-          });
-          card.appendChild(tagList);
-        }
+function render() {
+  const grid = document.getElementById('grid');
+  const items = visibleItems();
 
-        container.appendChild(card);
-      });
-    }
+  grid.replaceChildren(...items.map(renderCard));
+  document.getElementById('status').textContent =
+    state.items.length && !items.length ? 'No resources match your filters.' : '';
 
-    buildFilterBar();
+  for (const btn of document.querySelectorAll('#sort button'))
+    btn.setAttribute('aria-pressed', btn.dataset.sort === state.sort);
+  for (const btn of document.querySelectorAll('#keywords button'))
+    btn.setAttribute('aria-pressed', state.keywords.includes(btn.dataset.key));
+  for (const btn of document.querySelectorAll('#formats button'))
+    btn.setAttribute('aria-pressed', state.formats.includes(btn.dataset.key));
+}
 
-    document.getElementById('search-box').addEventListener('input', e => {
-      searchQuery = e.target.value.trim().toLowerCase();
-      applyFilters();
-    });
+function buildControls() {
+  const sort = document.getElementById('sort');
+  for (const [key, label] of [['az', 'A–Z'], ['group', 'group'], ['format', 'format']]) {
+    const btn = el('button', null, label);
+    btn.dataset.sort = key;
+    btn.onclick = () => { state.sort = key; render(); };
+    sort.append(btn);
+  }
 
-    Papa.parse('data/resources.csv', {
-      header: true,
-      download: true,
-      skipEmptyLines: true,
-      complete: results => renderResources(results.data),
-      error: () => {
-        document.getElementById('resources').innerHTML =
-          '<p class="no-results">could not load data/resources.csv. Oops.</p>';
-      }
-    });
-  </script>
+  // Each pillar names its member tags while hovered or focused.
+  const members = {};
+  for (const [tag, key] of Object.entries(PILLAR_OF)) (members[key] ||= []).push(tag);
 
+  const reveal = document.getElementById('reveal');
+  const showMembers = key => reveal.replaceChildren(
+    el('b', null, PILLARS[key].label),
+    el('span', null, members[key].slice().sort((a, b) =>
+      a.toLowerCase().localeCompare(b.toLowerCase())).join('  ·  ')));
+
+  const keywords = document.getElementById('keywords');
+  for (const key of ORDER) {
+    const btn = el('button', 'keyword', PILLARS[key].label);
+    btn.dataset.key = key;
+    btn.style.setProperty('--bg', PILLARS[key].bg);
+    btn.style.setProperty('--fg', PILLARS[key].fg);
+    btn.onmouseenter = btn.onfocus = () => showMembers(key);
+    btn.onclick = () => { toggle(state.keywords, key); render(); };
+    keywords.append(btn);
+  }
+  keywords.onmouseleave = () => reveal.replaceChildren();
+
+  const formats = document.getElementById('formats');
+  for (const key of ['article', 'review', 'video']) {
+    const btn = el('button', 'format', key);
+    btn.dataset.key = key;
+    btn.onclick = () => { toggle(state.formats, key); render(); };
+    formats.append(btn);
+  }
+
+  const clear = el('button', 'clear', 'clear');
+  clear.onclick = () => {
+    Object.assign(state, { query: '', keywords: [], formats: [] });
+    document.getElementById('search').value = '';
+    render();
+  };
+  formats.append(clear);
+
+  document.getElementById('search').oninput = e => {
+    state.query = e.target.value;
+    render();
+  };
+}
+
+buildControls();
+
+fetch('data/resources.csv')
+  .then(r => {
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.text();
+  })
+  .then(text => {
+    state.items = parseCsv(text).filter(r => r.title).map(toItem);
+    render();
+  })
+  .catch(err => {
+    document.getElementById('status').textContent =
+      `could not load data/resources.csv (${err.message}).`;
+  });
+</script>
 </body>
 </html>
